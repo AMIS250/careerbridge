@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Global Training Marketplace</title>
+  <link rel="stylesheet" href="style.css">
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #f6f7fb;
+  color: #0f172a;
+  padding-top: 100px; /* adjust if navbar height changes */
+}
+    .navbar {
+      background-color: #ffffff;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 24px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      gap: 16px;
+    }
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  height: 80px;
+  transition: all 0.3s ease;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: #190380;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+select {
+  padding: 8px 12px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+}
+
+.btn-outline {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: 1px solid #073a02;
+  background: transparent;
+  color: #073a02;
+  cursor: pointer;
+}
+
+.btn-cart {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: none;
+  background: #073a02;
+  color: white;
+  cursor: pointer;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;      /* vertical center */
+  justify-content: center;  /* horizontal center */
+  text-align: center;
+  overflow: hidden;
+  color: white;
+  padding: 0 60px;          /* keep side spacing only */
+  margin-top: -20px;
+}
+.hero-text {
+  max-width: 850px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+.hero-text small {
+  color: #d72638;
+  font-weight: bold;
+}
+
+.hero-text h1 {
+  font-size: 44px;
+  margin: 20px 0;
+  line-height: 1.2;
+}
+
+.hero-text p {
+  font-size: 16px;
+  color: #475569;
+  max-width: 500px;
+}
+
+.btn-primary {
+  margin-top: 30px;
+  padding: 14px 26px;
+  border-radius: 30px;
+  border: none;
+  background: #073a02;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.image-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+/* NAV LINKS */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 500;
+  position: relative;
+}
+
+/* DROPDOWN */
+.dropdown {
+  position: relative;
+}
+
+.dropdown-toggle {
+  padding-bottom: 5px;
+}
+
+/* underline effect */
+.dropdown-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #dc2626;
+  transform: scaleX(0);
+  transition: 0.3s;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+  transform: scaleX(1);
+}
+
+/* DROPDOWN MENU */
+.dropdown-menu {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+  padding: 12px 0;
+  min-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s ease;
+  z-index: 100;
+}
+
+/* SHOW ON HOVER */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* DROPDOWN LINKS */
+.dropdown-menu a {
+  display: block;
+  padding: 12px 20px;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: #f8fafc;
+  color: #dc2626;
+}
+
+/* ARROW NOTCH */
+.dropdown-arrow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: white;
+  border-radius: 3px;
+  transform: translateX(-50%) rotate(45deg);
+}
+/* NAV MENU */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+/* LINKS */
+.nav-menu a {
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 500;
+  position: relative;
+}
+
+/* DROPDOWN WRAPPER */
+.dropdown {
+  position: relative;
+}
+
+/* UNDERLINE EFFECT */
+.dropdown-toggle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: #085c01;
+  transform: scaleX(0);
+  transition: 0.3s ease;
+}
+
+.dropdown:hover .dropdown-toggle::after {
+  transform: scaleX(1);
+}
+
+/* DROPDOWN MENU */
+.dropdown-menu {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+  padding: 12px 0;
+  min-width: 210px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s ease;
+  z-index: 100;
+}
+
+/* SHOW MENU */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* DROPDOWN ITEMS */
+.dropdown-menu a {
+  display: block;
+  padding: 12px 22px;
+  color: #0f172a;
+  font-weight: 500;
+}
+
+.dropdown-menu a:hover {
+  background: #f8fafc;
+  color: #073a02;
+}
+
+/* ARROW NOTCH */
+.dropdown-arrow {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  width: 16px;
+  height: 16px;
+  background: white;
+  transform: translateX(-50%) rotate(45deg);
+  border-radius: 3px;
+}
+/* ABOUT SECTION */
+.about-section {
+  padding: 100px 60px;
+  background: #ffffff;
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  gap:80px;
+}
+
+/* IMAGE SIDE */
+.about-image {
+  position: relative;
+  width: 50%;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+/* FLOATING SHAPES */
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.shape-blue {
+  width: 120px;
+  height: 120px;
+  background: #073a02;
+  bottom: -30px;
+  right: -30px;
+}
+
+.shape-red {
+  width: 60px;
+  height: 60px;
+  background: #0f172a;
+  top: -20px;
+  left: -20px;
+}
+
+/* CONTENT SIDE */
+.about-content {
+  width: 50%;
+}
+
+.about-content h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.about-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 20px;
+  max-width: 520px;
+}
+
+/* BUTTON */
+.about-btn {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 14px 26px;
+  background: #073a02;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.about-btn:hover {
+  background: #0f6707;
+}
+/* HOW IT WORKS SECTION */
+.how-section {
+  padding: 100px 60px;
+  background: #ffffff;
+}
+
+.how-container {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  gap: 70px;
+  align-items: flex-start;
+}
+
+/* TEXT */
+.how-text {
+  width: 55%;
+}
+
+.how-text h2 {
+  font-size: 38px;
+  margin-bottom: 20px;
+  color: #0f172a;
+}
+
+.how-intro {
+  font-size: 16px;
+  color: #475569;
+  margin-bottom: 40px;
+  max-width: 550px;
+}
+
+/* LIST ITEMS */
+.how-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.how-item h4 {
+  font-size: 18px;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.how-item p {
+  font-size: 15px;
+  color: #475569;
+  line-height: 1.6;
+  max-width: 520px;
+}
+
+/* IMAGE */
+.how-image {
+  width: 45%;
+  position: relative;
+}
+
+.how-image img {
+  width: 100%;
+  border-radius: 18px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+}
+
+/* FLOATING SHAPE */
+.how-shape {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 90px;
+  height: 90px;
+  background: #0f172a;
+  border-radius: 50%;
+  z-index: -1;
+}
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 80px 60px;
+  overflow: hidden;
+  color: white;
+}
+
+/* Background video */
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* Dark overlay for readability */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+/* Make text readable */
+.hero-text h1,
+.hero-text p,
+.hero-text small {
+  color: white;
+}
+.logo img {
+  height: 50px;     /* controls size */
+  width: auto;
+  display: block;
+}
+.logo img {
+  height: 50px;
+}
+/* PLATFORM SECTION (New Design) */
+.platform-section {
+  padding: 100px 60px;
+  background: #f2f6f2; /* soft green background like sketch */
+}
+
+.platform-container {
+  max-width: 1300px;
+  margin: auto;
+  display: flex;
+  gap: 40px;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 20px 0;
+}
+
+.platform-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+.platform-card {
+  background: #ffffff;
+  border-radius: 30px;
+  padding: 50px;
+
+  flex: 0 0 420px; /* fixed size */
+  position: relative;
+  transition: transform 0.25s ease;
+}
+
+
+
+.platform-card h2 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  color: #0f172a;
+}
+
+.platform-card p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #334155;
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+.platform-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(90deg, #000000, #073a02);
+  color: white;
+  text-decoration: none;
+  padding: 14px 26px;
+  border-radius: 40px;
+  font-weight: 500;
+  margin-top: 20px;
+  transition: 0.3s ease;
+}
+
+.platform-btn:hover {
+  opacity: 0.9;
+}
+
+.arrow-circle {
+  background: #1f4d1c;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .platform-container {
+    flex-direction: column;
+  }
+}
+/* PARTNERS (Full Width Continuation) */
+.partners-container {
+  width: calc(100% + 120px);
+  margin-left: -60px;
+  margin-right: -60px;
+  margin-top: -35px;     /* reduced */
+  margin-bottom: 60px;  /* reduced */
+
+  background: #ffffff;
+  border-radius: 0;
+  padding: 10px 80px;   /* reduced from 60px */
+  text-align: center;
+}
+
+
+.partners-container h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #0f172a;
+}
+
+.partners-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+  flex-wrap: wrap;
+}
+
+.partners-logos img {
+  height: 70px;
+  object-fit: contain;
+  transition: 0.3s ease;
+}
+
+.partners-logos img:hover {
+  transform: scale(1.05);
+}
+.explore-more-wrapper {
+  text-align: center;
+  margin: 40px 0 20px 0;
+}
+/* PROGRESS TRACK */
+.scroll-progress {
+  width: 120px;
+  height: 6px;
+  background: #0f172a; /* dark track */
+  border-radius: 10px;
+  margin: 30px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+/* RED MOVING BAR */
+.scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #073a02; /* red */
+  border-radius: 10px;
+  transition: width 0.15s linear;
+}
+/* SLIDER WRAPPER */
+.platform-slider {
+  position: relative;
+}
+
+/* ARROW BASE */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: none;
+  background: white;
+  color: #0f172a;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 20;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
+}
+
+/* hover */
+.slider-arrow:hover {
+  background:linear-gradient(90deg, #000000, #073a02);;
+  color: white;
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* positions */
+.slider-arrow.left {
+  left: -25px;
+}
+
+.slider-arrow.right {
+  right: -25px;
+}
+
+/* mobile safety */
+@media (max-width: 768px) {
+  .slider-arrow {
+    display: none;
+  }
+}
+/* ===== PROJECTS SECTION ===== */
+
+.projects-section {
+  padding: 80px 60px;
+  background: #f2f6f2;
+    max-width: 1300px;
+  margin: auto;
+}
+
+.projects-title {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: #0f172a;
+}
+
+/* slider wrapper */
+.projects-slider {
+  position: relative;
+  padding: 0 40px;
+  overflow: visible; /* 🔥 THIS FIXES THE RIGHT ARROW */
+}
+
+/* scroll container */
+.projects-container {
+  display: flex;
+  gap: 28px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 60px; /* 🔥 gives arrows breathing room */
+}
+
+.projects-container::-webkit-scrollbar {
+  display: none;
+}
+
+/* card */
+.project-card {
+  flex: 0 0 320px;
+  background: white;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.project-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.show-more {
+  display: inline-block;
+  margin-top: 14px;
+  color: #073a02;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* arrows */
+.proj-arrow {
+position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: none;
+  background: #ffffff;
+  color: #0f172a;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 999; /* 🔥 CRITICAL FIX */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+  transition: all 0.25s ease;
+}
+.proj-arrow.left .proj-arrow.left {
+  left: -8px;
+}
+
+.proj-arrow.right{
+  right: -8px;
+}
+@media (max-width: 768px) {
+  .proj-arrow {
+    display: none;
+  }
+}
+
+.proj-arrow:hover {
+  background: linear-gradient(90deg, #000000, #073a02);;
+  color: white;
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* progress */
+.proj-progress {
+  width: 120px;
+  height: 6px;
+  background: #0f172a;
+  border-radius: 10px;
+  margin: 30px auto 0;
+  overflow: hidden;
+}
+
+.proj-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: #073a02;
+  transition: width 0.15s linear;
+}
+/* ===== PROJECTS FULL WIDTH CONTAINER ===== */
+
+.projects-container-wrapper {
+  width: calc(100% + 120px);
+  margin-left: -60px;
+  margin-right: -60px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+
+  background: #ffffff;
+  padding: 30px 80px;
+}
+.partners-logos-wrapper {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+}
+
+.partners-logos {
+  display: flex;
+  gap: 100px;
+  width: max-content;
+  animation: scrollLeft 30s linear infinite;
+}
+
+/* Smooth seamless loop */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+/* ===== SUCCESS SECTION ===== */
+
+.success-section {
+  background:linear-gradient(90deg, #000000, #0f172a);;;
+  
+padding: 50px 10px;
+  text-align: center;
+  color: white;
+    margin-top: -140px; /* Remove top margin from success */
+
+}
+
+.success-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.success-label {
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #22c55e;
+  font-weight: 600;
+}
+
+.success-avatar img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 30px 0;
+  border: 4px solid rgba(255,255,255,0.2);
+  object-fit: cover;
+}
+
+.success-quote {
+  font-size: 18px;
+  line-height: 1.8;
+  margin-bottom: 25px;
+}
+
+.success-name {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.success-role {
+  font-size: 14px;
+  color: #a7f3d0;
+  margin-bottom: 30px;
+}
+
+.success-btn {
+  display: inline-block;
+  padding: 12px 26px;
+  background: #d1fae5;
+  color: #0f172a;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.success-btn:hover {
+  background: white;
+}
+
+
+/* ===== FOOTER ===== */
+
+.footer {
+  background: linear-gradient(90deg, #000000, #073a02);;
+  color: white;
+  padding: 80px 60px 40px;
+  
+}
+
+.footer-container {
+  max-width: 1300px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 50px;
+  margin-top: 20px; /* Remove top margin from success */
+}
+
+.footer-col h4 {
+  margin-bottom: 20px;
+}
+
+.footer-col p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-col ul li a:hover {
+  color: #22c55e;
+}
+
+.footer-logo {
+  font-size: 22px;
+  color: #22c55e;
+  margin-bottom: 20px;
+}
+
+.newsletter {
+  display: flex;
+  margin-top: 15px;
+}
+
+.newsletter input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 6px 0 0 6px;
+}
+
+.newsletter button {
+  padding: 10px 18px;
+  border: none;
+  background: #22c55e;
+  color: white;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+}
+
+.newsletter button:hover {
+  background: #16a34a;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* small center dot */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  background: #073a02;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width 0.25s ease, height 0.25s ease,
+              background 0.25s ease, opacity 0.25s ease;
+}
+/* 🔥 EXPANDED STATE (when hovering buttons) */
+.cursor-dot.expand {
+  width: 44px;
+  height: 44px;
+  background: rgba(7, 58, 2, 0.08); /* very light */
+  border: 1.5px solid rgba(7, 58, 2, 0.35);
+  box-shadow: 0 0 18px rgba(7, 58, 2, 0.15);
+}
+
+/* optional: grow on hover */
+a:hover ~ .cursor-dot,
+button:hover ~ .cursor-dot {
+  transform: translate(-50%, -50%) scale(1.8);
+}
+/* ================= FLOATING SHAPES ================= */
+
+.projects-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* container */
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* base shape */
+.shape {
+  position: absolute;
+  display: block;
+  opacity: 0.15;
+  animation: floatShape 18s ease-in-out infinite;
+  background: linear-gradient(135deg, #2f2d4d, #5b5a8a);
+}
+
+/* circle */
+.shape.circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+/* square */
+.shape.square {
+  width: 70px;
+  height: 70px;
+  border-radius: 12px;
+}
+
+/* small variants */
+.shape.small {
+  width: 40px;
+  height: 40px;
+  animation-duration: 22s;
+}
+
+/* positions */
+.shape:nth-child(1) {
+  top: 10%;
+  left: 8%;
+}
+
+.shape:nth-child(2) {
+  top: 65%;
+  left: 85%;
+}
+
+.shape:nth-child(3) {
+  top: 75%;
+  left: 15%;
+}
+
+.shape:nth-child(4) {
+  top: 20%;
+  left: 75%;
+}
+
+/* animation */
+@keyframes floatShape {
+  0%   { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  50%  { transform: translateY(-25px) translateX(15px) rotate(90deg); }
+  100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+}
+
+/* ensure your real content stays above */
+.projects-section > *:not(.floating-shapes) {
+  position: relative;
+  z-index: 1;
+}
+</style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+<div class="logo">
+  <img src="Career_Bridge_Rwanda_Transparent.png" alt="Article26 Logo">
+</div>
+
+<nav class="nav-menu">
+
+  <!-- ABOUT US -->
+  <div class="dropdown">
+    <a href="#" class="dropdown-toggle">About us</a>
+    <div class="dropdown-menu">
+      <span class="dropdown-arrow"></span>
+      <a href="#">Vision & Mission</a>
+      <a href="#">Agenda 2030</a>
+      <a href="#">Our Team</a>
+    </div>
+  </div>
+
+  <!-- MARKETPLACE -->
+  <div class="dropdown">
+    <a href="#" class="dropdown-toggle">Marketplace</a>
+    <div class="dropdown-menu">
+      <span class="dropdown-arrow"></span>
+      <a href="#">Courses</a>
+      <a href="#">Certifications</a>
+      <a href="#">Trainers</a>
+      <a href="#">Institutions</a>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="dropdown">
+    <a href="#" class="dropdown-toggle">Projects</a>
+    <div class="dropdown-menu">
+      <span class="dropdown-arrow"></span>
+      <a href="#">Ongoing Projects</a>
+      <a href="#">Completed Projects</a>
+      <a href="#">Impact Stories</a>
+    </div>
+  </div>
+
+  <!-- WHO ARE YOU -->
+  <div class="dropdown">
+    <a href="#" class="dropdown-toggle">Who are you?</a>
+    <div class="dropdown-menu">
+      <span class="dropdown-arrow"></span>
+      <a href="#">Student</a>
+      <a href="#">Trainer</a>
+      <a href="#">Institution</a>
+      <a href="#">Partner</a>
+    </div>
+  </div>
+
+</nav>
+<div class="nav-actions">
+      <select>
+        <option>Choose country</option>
+        <option>Rwanda</option>
+        <option>Kenya</option>
+        <option>USA</option>
+      </select>
+      <button class="btn-outline">Stay tuned</button>
+      <button class="btn-cart">🛒 Cart</button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+<section class="hero">
+
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="background vid.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Overlay (optional dark layer for readability) -->
+  <div class="hero-overlay"></div>
+
+  <div class="hero-text">
+    <small>Article26</small>
+    <h1>The Global Training Marketplace for 21st century Skills</h1>
+    <p>
+      Connect with world-class training, learners, and institutions on one platform.
+      Upskill, certify, and support equal access to education worldwide.
+    </p>
+          <a href="#" class="platform-btn">
+        Explore the Marketplace
+        <span class="arrow-circle">→</span>
+      </a>
+    </div>
+  </div>
+
+</section>
+<div class="african-border-wrapper">
+<section class="platform-section">
+  <div class="floating-shapes">
+  <span class="shape circle"></span>
+  <span class="shape square"></span>
+  <span class="shape circle small"></span>
+  <span class="shape square small"></span>
+  
+</div>
+  <div class="platform-slider">
+
+  <!-- LEFT ARROW -->
+  <button class="slider-arrow left" id="prevBtn">
+    ❮
+  </button>
+  <div class="platform-container">
+
+    <!-- CARD 1 -->
+    <div class="platform-card">
+      <h2>What is Our Platform?</h2>
+      <p>
+        Our platform connects learners, professionals, and institutions
+        to practical, future-ready skills that meet real industry needs.
+        We focus on hands-on learning, mentorship, and globally relevant
+        certifications that empower individuals.
+      </p>
+
+      <p>
+        By working closely with training providers, companies, and communities,
+        we ensure learning is accessible, impactful, and aligned with
+        sustainable development goals.
+      </p>
+
+      <a href="#" class="platform-btn">
+        Explore our trainings
+        <span class="arrow-circle">→</span>
+      </a>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="platform-card">
+      <h2>How Our Platform Works</h2>
+      <p>
+        Our platform connects learners, professionals, and institutions
+        to practical, future-ready skills that meet real industry needs.
+        We focus on hands-on learning, mentorship, and globally relevant
+        certifications that empower individuals.
+      </p>
+
+      <p>
+        By working closely with training providers, companies, and communities,
+        we ensure learning is accessible, impactful, and aligned with
+        sustainable development goals.
+      </p>
+
+      <a href="#" class="platform-btn">
+        Contact us
+        <span class="arrow-circle">→</span>
+      </a>
+    </div>
+        <div class="platform-card">
+      <h2>How Our Platform Works</h2>
+      <p>
+        Our platform connects learners, professionals, and institutions
+        to practical, future-ready skills that meet real industry needs.
+        We focus on hands-on learning, mentorship, and globally relevant
+        certifications that empower individuals.
+      </p>
+
+      <p>
+        By working closely with training providers, companies, and communities,
+        we ensure learning is accessible, impactful, and aligned with
+        sustainable development goals.
+      </p>
+
+      <a href="#" class="platform-btn">
+        Contact us
+        <span class="arrow-circle">→</span>
+      </a>
+    </div>
+        <div class="platform-card">
+      <h2>How Our Platform Works</h2>
+      <p>
+        Our platform connects learners, professionals, and institutions
+        to practical, future-ready skills that meet real industry needs.
+        We focus on hands-on learning, mentorship, and globally relevant
+        certifications that empower individuals.
+      </p>
+
+      <p>
+        By working closely with training providers, companies, and communities,
+        we ensure learning is accessible, impactful, and aligned with
+        sustainable development goals.
+      </p>
+
+      <a href="#" class="platform-btn">
+        Contact us
+        <span class="arrow-circle">→</span>
+      </a>
+    </div>
+    </div>
+      <!-- RIGHT ARROW -->
+  <button class="slider-arrow right" id="nextBtn">
+    ❯
+  </button>
+
+</div>
+<div class="scroll-progress">
+  <div class="scroll-progress-bar"></div>
+</div>
+<div class="explore-more-wrapper">
+
+</div>
+<div class="projects-container-wrapper">
+
+  <div class="projects-section">
+
+    <h2 class="projects-title">Experience our projects</h2>
+
+    <div class="projects-slider">
+
+      <button class="proj-arrow left" id="projPrev">❮</button>
+
+      <div class="projects-container">
+         <div class="project-card">
+        <img src="alu~-~media--8bd04ab3--query@2x.f3353a97.webp" alt="">
+        <h3>African Leadership University (ALU) Kigali + Mauritius</h3>
+        <p>
+          Together we want to educate Africa's change makers,
+          but also develop young leaders of courage and imagination.
+          <button class="proj-arrow right" id="projNext">❯</button>
+        </p>
+        <a href="#" class="show-more">Show more →</a>
+      </div>
+
+      <!-- CARD -->
+      <div class="project-card">
+        <img src="kepler~-~media--8bd04ab3--query@2x.13c30b4f.webp" alt="">
+        <h3>Kepler College Kigali</h3>
+        <p>
+          Together we want to create new pathways and opportunities
+          for students of every background.
+        </p>
+        <a href="#" class="show-more">Show more →</a>
+      </div>
+
+      <!-- CARD -->
+      <div class="project-card">
+        <img src="unilak~-~media--8bd04ab3--query@2x.54e6ecea.webp" alt="">
+        <h3>UNILAK Kigali Campus</h3>
+        <p>
+          Together, we strive for excellence in education
+          with the goal to uplift local communities.
+        </p>
+        <a href="#" class="show-more">Show more →</a>
+      </div>
+
+      <!-- CARD -->
+      <div class="project-card">
+        <img src="minict~-~media--8bd04ab3--query@2x.300fe1b6.webp" alt="">
+        <h3>MINICT Partnership</h3>
+        <p>
+          Together we want to empower students to take part
+          in Africa's digital transformation.
+        </p>
+        <a href="#" class="show-more">Show more →</a>
+      </div>
+
+    </div><!-- your project cards stay exactly the same -->
+      </div>
+
+      <button class="proj-arrow right" id="projNext">❯</button>
+
+    </div>
+    <div class="proj-progress">
+      <div class="proj-progress-bar"></div>
+    </div>
+</div>
+
+  <div class="partners-container">
+  <h2>Our partners from various Industries</h2>
+
+<div class="partners-logos-wrapper">
+  <div class="partners-logos">
+    <img src="Article 26.png" alt="Article26">
+    <img src="Learnlife Rwanda.png" alt="Learnlife Rwanda">
+    <img src="AUCA.png" alt="NESA">
+    <img src="ALU.png" alt="NESA">
+    <img src="Screenshot 2026-02-20 131753.png" alt="NESA">
+    <img src="UNIVERSITY OF KIGALI.png" alt="NESA">
+
+    <!-- duplicate logos for seamless loop -->
+    <img src="Article 26.png" alt="Article26">
+    <img src="Learnlife Rwanda.png" alt="Learnlife Rwanda">
+    <img src="AUCA.png" alt="NESA">
+    <img src="ALU.png" alt="NESA">
+    <img src="Screenshot 2026-02-20 131753.png" alt="NESA">
+    <img src="UNIVERSITY OF KIGALI.png" alt="NESA">
+  </div>
+</div>
+
+  </div>
+</div>
+
+</section>
+<!-- SUCCESS STORIES -->
+<section class="success-section">
+
+  <div class="success-container">
+    <span class="success-label">SUCCESS STORIES</span>
+
+    <div class="success-avatar">
+      <img src="56565.jpg" alt="Student">
+    </div>
+
+    <p class="success-quote">
+      "Bridge gave me the practical experience I needed. The internship was perfectly
+      aligned with my studies and helped me secure a full-time job before I even graduated."
+    </p>
+
+    <h4 class="success-name">Aline U.</h4>
+    <p class="success-role">Internship Placement - Software Development</p>
+
+    <a href="#" class="success-btn">View More Stories</a>
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- COLUMN 1 -->
+    <div class="footer-col">
+      <h3 class="footer-logo">BRIDGE</h3>
+      <p>
+        Empowering the next generation of skilled professionals in Rwanda
+        through training, mentorship, and career opportunities.
+      </p>
+    </div>
+
+    <!-- COLUMN 2 -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Programs</a></li>
+        <li><a href="#">How to Apply</a></li>
+        <li><a href="#">Success Stories</a></li>
+      </ul>
+    </div>
+
+    <!-- COLUMN 3 -->
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <p>+250 788 434 778</p>
+      <p>bridgerwanda77@gmail.com</p>
+      <p>KN 67 Street, UR-CST Unipod, Kigali, Rwanda</p>
+    </div>
+
+    <!-- COLUMN 4 -->
+    <div class="footer-col">
+      <h4>Stay Updated</h4>
+      <p>Sign up for our newsletter to get the latest news and updates.</p>
+
+      <div class="newsletter">
+        <input type="email" placeholder="Enter your email">
+        <button>Sign Up</button>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Bridge. All Rights Reserved.
+  </div>
+
+</footer>
+</div>
+<div class="cursor-dot"></div>
+<script>
+  window.addEventListener("scroll", function () {
+    const navbar = document.querySelector(".navbar");
+
+    if (window.scrollY > 50) {
+      navbar.style.background = "rgba(255, 255, 255, 0.7)";
+      navbar.style.backdropFilter = "blur(10px)";
+      navbar.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
+    } else {
+      navbar.style.background = "#ffffff";
+      navbar.style.backdropFilter = "none";
+      navbar.style.boxShadow = "0 2px 4px rgba(0,0,0,0.1)";
+    }
+  });
+
+const container = document.querySelector(".platform-container");
+const cards = document.querySelectorAll(".platform-card");
+
+container.addEventListener("scroll", () => {
+  const containerRect = container.getBoundingClientRect();
+  const center = containerRect.left + containerRect.width / 2;
+
+  cards.forEach((card, index) => {
+    const rect = card.getBoundingClientRect();
+    const cardCenter = rect.left + rect.width / 2;
+
+    const distance = (cardCenter - center) / 300;
+
+    // 🔥 pile effect during scroll
+    card.style.transform = `
+      translateX(${distance * -60}px)
+      scale(${1 - Math.abs(distance) * 0.08})
+    `;
+    card.style.zIndex = 100 - Math.abs(Math.round(distance * 10));
+  });
+});
+const scrollContainer = document.querySelector(".platform-container");
+const progressBar = document.querySelector(".scroll-progress-bar");
+
+scrollContainer.addEventListener("scroll", () => {
+  const maxScroll =
+    scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+  const percentage = (scrollContainer.scrollLeft / maxScroll) * 100;
+
+  progressBar.style.width = percentage + "%";
+});
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+const slider = document.querySelector(".platform-container");
+
+const scrollStep = 460; // matches your card width
+
+nextBtn.addEventListener("click", () => {
+  slider.scrollBy({
+    left: scrollStep,
+    behavior: "smooth"
+  });
+});
+
+prevBtn.addEventListener("click", () => {
+  slider.scrollBy({
+    left: -scrollStep,
+    behavior: "smooth"
+  });
+});
+const projNext = document.getElementById("projNext");
+const projPrev = document.getElementById("projPrev");
+const projContainer = document.querySelector(".projects-container");
+
+const projStep = 380; // adjust if your cards are wider
+
+projNext.addEventListener("click", () => {
+  projContainer.scrollBy({
+    left: projStep,
+    behavior: "smooth"
+  });
+});
+
+projPrev.addEventListener("click", () => {
+  projContainer.scrollBy({
+    left: -projStep,
+    behavior: "smooth"
+  });
+});
+
+/* progress */
+projContainer.addEventListener("scroll", () => {
+  const maxScroll =
+    projContainer.scrollWidth - projContainer.clientWidth;
+
+  const percent = (projContainer.scrollLeft / maxScroll) * 100;
+  const projBar = document.querySelector(".proj-progress-bar");
+
+  projBar.style.width = percent + "%"; // 🔥 missing line
+});
+const dot = document.querySelector(".cursor-dot");
+
+let mouseX = 0;
+let mouseY = 0;
+let posX = 0;
+let posY = 0;
+
+// distance offset (controls how far behind)
+const offset = 6; // 🔥 increase for more distance
+
+window.addEventListener("mousemove", (e) => {
+  mouseX = e.clientX - offset;
+  mouseY = e.clientY - offset;
+});
+
+function animateCursor() {
+  // smooth lag (smaller = more delay)
+  posX += (mouseX - posX) * 0.12;
+  posY += (mouseY - posY) * 0.12;
+
+  dot.style.left = posX + "px";
+  dot.style.top = posY + "px";
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+// 🔥 EXPAND on interactive elements
+const hoverTargets = document.querySelectorAll(
+  "button, a, .platform-btn, .slider-arrow, .proj-arrow"
+);
+
+hoverTargets.forEach(el => {
+  el.addEventListener("mouseenter", () => {
+    dot.classList.add("expand");
+  });
+
+  el.addEventListener("mouseleave", () => {
+    dot.classList.remove("expand");
+  });
+});
+</script>
+</script>
+<div class="cursor-dot"></div>
+</body>
+</html>
